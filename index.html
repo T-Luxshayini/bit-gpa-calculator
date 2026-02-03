@@ -2,91 +2,417 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIT GPA Calculator</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1>BIT GPA Calculator</h1>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">BIT GPA Calculator</span>
+          <span class="logo-badge">2024 Curriculum</span>
+        </div>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+    </header>
 
-<!-- ===== LEVEL 01 ===== -->
-<h2>Level 01</h2>
+    <!-- Level 01 -->
+    <section class="level-section">
+      <div class="level-header">
+        <h2 class="level-title">Level 01</h2>
+        <div class="level-gpa" id="lgpa1-display">
+          <span class="level-gpa-label">LGPA</span>
+          <span class="level-gpa-value" id="lgpa1">--</span>
+        </div>
+      </div>
 
-<h3>
-  Semester 01
-  <button class="refresh" onclick="resetSemester('s1')">🔄</button>
-</h3>
-<table>
-  <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
-  <tr><td>Communication Skills</td><td>2</td><td><select class="s1" data-credit="2"></select></td></tr>
-  <tr><td>Computer Systems</td><td>2</td><td><select class="s1" data-credit="2"></select></td></tr>
-  <tr><td>Mathematics & Statistics</td><td>2</td><td><select class="s1" data-credit="2"></select></td></tr>
-  <tr><td>Web Design</td><td>3</td><td><select class="s1" data-credit="3"></select></td></tr>
-  <tr><td>Fundamentals of Programming</td><td>3</td><td><select class="s1" data-credit="3"></select></td></tr>
-  <tr><td>ICT Skills</td><td>3</td><td><select class="s1" data-credit="3"></select></td></tr>
-</table>
-<button onclick="calculateSGPA('s1', 'sgpa1')">Calculate Semester 01 GPA</button>
-<h4>SGPA Semester 01: <span id="sgpa1">–</span></h4>
+      <!-- Semester 01 -->
+      <div class="semester-card">
+        <div class="semester-header">
+          <div class="semester-info">
+            <h3 class="semester-title">Semester 01</h3>
+            <span class="semester-credits">15 Credits</span>
+          </div>
+          <div class="semester-actions">
+            <div class="sgpa-display">
+              <span class="sgpa-label">SGPA</span>
+              <span class="sgpa-value" id="sgpa1">--</span>
+            </div>
+            <button class="btn-icon" onclick="resetSemester('s1')" aria-label="Reset Semester 01">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                <path d="M21 3v5h-5"/>
+                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                <path d="M8 16H3v5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="subjects-grid">
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Communication Skills</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s1" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Computer Systems</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s1" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Mathematics & Statistics</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s1" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Web Design</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s1" data-credit="3"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Fundamentals of Programming</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s1" data-credit="3"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">ICT Skills</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s1" data-credit="3"></select>
+          </div>
+        </div>
+        <button class="btn-calculate" onclick="calculateSGPA('s1', 'sgpa1')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="16" y1="14" x2="16" y2="18"/>
+            <line x1="8" y1="10" x2="8" y2="10.01"/>
+            <line x1="12" y1="10" x2="12" y2="10.01"/>
+            <line x1="16" y1="10" x2="16" y2="10.01"/>
+            <line x1="8" y1="14" x2="8" y2="14.01"/>
+            <line x1="12" y1="14" x2="12" y2="14.01"/>
+            <line x1="8" y1="18" x2="8" y2="18.01"/>
+            <line x1="12" y1="18" x2="12" y2="18.01"/>
+          </svg>
+          Calculate SGPA
+        </button>
+      </div>
 
-<h3>
-  Semester 02
-  <button class="refresh" onclick="resetSemester('s2')">🔄</button>
-</h3>
-<table>
-  <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
-  <tr><td>Fundamentals of Databases</td><td>2</td><td><select class="s2" data-credit="2"></select></td></tr>
-  <tr><td>Technical Writing</td><td>2</td><td><select class="s2" data-credit="2"></select></td></tr>
-  <tr><td>Visual Applications</td><td>3</td><td><select class="s2" data-credit="3"></select></td></tr>
-  <tr><td>Web Programming</td><td>3</td><td><select class="s2" data-credit="3"></select></td></tr>
-  <tr><td>System Design Paradigms</td><td>3</td><td><select class="s2" data-credit="3"></select></td></tr>
-  <tr><td>ICT Project</td><td>2</td><td><select class="s2" data-credit="2"></select></td></tr>
-</table>
-<button onclick="calculateSGPA('s2', 'sgpa2')">Calculate Semester 02 GPA</button>
-<h4>SGPA Semester 02: <span id="sgpa2">–</span></h4>
+      <!-- Semester 02 -->
+      <div class="semester-card">
+        <div class="semester-header">
+          <div class="semester-info">
+            <h3 class="semester-title">Semester 02</h3>
+            <span class="semester-credits">15 Credits</span>
+          </div>
+          <div class="semester-actions">
+            <div class="sgpa-display">
+              <span class="sgpa-label">SGPA</span>
+              <span class="sgpa-value" id="sgpa2">--</span>
+            </div>
+            <button class="btn-icon" onclick="resetSemester('s2')" aria-label="Reset Semester 02">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                <path d="M21 3v5h-5"/>
+                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                <path d="M8 16H3v5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="subjects-grid">
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Fundamentals of Databases</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s2" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Technical Writing</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s2" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Visual Applications</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s2" data-credit="3"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Web Programming</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s2" data-credit="3"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">System Design Paradigms</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s2" data-credit="3"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">ICT Project</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s2" data-credit="2"></select>
+          </div>
+        </div>
+        <button class="btn-calculate" onclick="calculateSGPA('s2', 'sgpa2')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="16" y1="14" x2="16" y2="18"/>
+            <line x1="8" y1="10" x2="8" y2="10.01"/>
+            <line x1="12" y1="10" x2="12" y2="10.01"/>
+            <line x1="16" y1="10" x2="16" y2="10.01"/>
+            <line x1="8" y1="14" x2="8" y2="14.01"/>
+            <line x1="12" y1="14" x2="12" y2="14.01"/>
+            <line x1="8" y1="18" x2="8" y2="18.01"/>
+            <line x1="12" y1="18" x2="12" y2="18.01"/>
+          </svg>
+          Calculate SGPA
+        </button>
+      </div>
+    </section>
 
-<h4>Level 01 LGPA: <span id="lgpa1">–</span></h4>
-<hr>
+    <!-- Level 02 -->
+    <section class="level-section">
+      <div class="level-header">
+        <h2 class="level-title">Level 02</h2>
+        <div class="level-gpa" id="lgpa2-display">
+          <span class="level-gpa-label">LGPA</span>
+          <span class="level-gpa-value" id="lgpa2">--</span>
+        </div>
+      </div>
 
-<!-- ===== LEVEL 02 ===== -->
-<h2>Level 02</h2>
+      <!-- Semester 03 -->
+      <div class="semester-card">
+        <div class="semester-header">
+          <div class="semester-info">
+            <h3 class="semester-title">Semester 03</h3>
+            <span class="semester-credits">18 Credits (15 GPA)</span>
+          </div>
+          <div class="semester-actions">
+            <div class="sgpa-display">
+              <span class="sgpa-label">SGPA</span>
+              <span class="sgpa-value" id="sgpa3">--</span>
+            </div>
+            <button class="btn-icon" onclick="resetSemester('s3')" aria-label="Reset Semester 03">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                <path d="M21 3v5h-5"/>
+                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                <path d="M8 16H3v5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="subjects-grid">
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Object Oriented Programming</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s3" data-credit="3"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Data Structures and Algorithms</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s3" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Operating Systems</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s3" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Calculus & Statistical Distributions</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s3" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Software Engineering</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s3" data-credit="3"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Object Oriented Analysis Design</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s3" data-credit="3"></select>
+          </div>
+          <div class="subject-row ngpa">
+            <div class="subject-info">
+              <span class="subject-name">Industry Mentoring Program</span>
+              <span class="subject-credit">3 Credits <span class="ngpa-badge">NGPA</span></span>
+            </div>
+            <select class="grade-select s3" data-credit="3" data-ngpa="true"></select>
+          </div>
+        </div>
+        <button class="btn-calculate" onclick="calculateSGPA('s3', 'sgpa3')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="16" y1="14" x2="16" y2="18"/>
+            <line x1="8" y1="10" x2="8" y2="10.01"/>
+            <line x1="12" y1="10" x2="12" y2="10.01"/>
+            <line x1="16" y1="10" x2="16" y2="10.01"/>
+            <line x1="8" y1="14" x2="8" y2="14.01"/>
+            <line x1="12" y1="14" x2="12" y2="14.01"/>
+            <line x1="8" y1="18" x2="8" y2="18.01"/>
+            <line x1="12" y1="18" x2="12" y2="18.01"/>
+          </svg>
+          Calculate SGPA
+        </button>
+      </div>
 
-<h3>
-  Semester 03
-  <button class="refresh" onclick="resetSemester('s3')">🔄</button>
-</h3>
-<table>
-  <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
-  <tr><td>Object Oriented Programming</td><td>3</td><td><select class="s3" data-credit="3"></select></td></tr>
-  <tr><td>Data Structures and Algorithms</td><td>2</td><td><select class="s3" data-credit="2"></select></td></tr>
-  <tr><td>Operating Systems</td><td>2</td><td><select class="s3" data-credit="2"></select></td></tr>
-  <tr><td>Calculus & Statistical Distributions</td><td>2</td><td><select class="s3" data-credit="2"></select></td></tr>
-  <tr><td>Software Engineering</td><td>3</td><td><select class="s3" data-credit="3"></select></td></tr>
-  <tr><td>Object Oriented Analysis Design</td><td>3</td><td><select class="s3" data-credit="3"></select></td></tr>
-  <tr><td>Industry Mentoring Program (NGPA)</td><td>3</td><td><select class="s3" data-credit="3" data-ngpa="true"></select></td></tr>
-</table>
-<button onclick="calculateSGPA('s3', 'sgpa3')">Calculate Semester 03 GPA</button>
-<h4>SGPA Semester 03: <span id="sgpa3">–</span></h4>
+      <!-- Semester 04 -->
+      <div class="semester-card">
+        <div class="semester-header">
+          <div class="semester-info">
+            <h3 class="semester-title">Semester 04</h3>
+            <span class="semester-credits">15 Credits</span>
+          </div>
+          <div class="semester-actions">
+            <div class="sgpa-display">
+              <span class="sgpa-label">SGPA</span>
+              <span class="sgpa-value" id="sgpa4">--</span>
+            </div>
+            <button class="btn-icon" onclick="resetSemester('s4')" aria-label="Reset Semester 04">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                <path d="M21 3v5h-5"/>
+                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                <path d="M8 16H3v5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="subjects-grid">
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Database Management Systems</span>
+              <span class="subject-credit">3 Credits</span>
+            </div>
+            <select class="grade-select s4" data-credit="3"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Data Communication & Networking</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s4" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">UI/UX Design</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s4" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">IT Quality Assurance</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s4" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">IT Project Management</span>
+              <span class="subject-credit">2 Credits</span>
+            </div>
+            <select class="grade-select s4" data-credit="2"></select>
+          </div>
+          <div class="subject-row">
+            <div class="subject-info">
+              <span class="subject-name">Programming Group Project</span>
+              <span class="subject-credit">4 Credits</span>
+            </div>
+            <select class="grade-select s4" data-credit="4"></select>
+          </div>
+        </div>
+        <button class="btn-calculate" onclick="calculateSGPA('s4', 'sgpa4')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="16" y1="14" x2="16" y2="18"/>
+            <line x1="8" y1="10" x2="8" y2="10.01"/>
+            <line x1="12" y1="10" x2="12" y2="10.01"/>
+            <line x1="16" y1="10" x2="16" y2="10.01"/>
+            <line x1="8" y1="14" x2="8" y2="14.01"/>
+            <line x1="12" y1="14" x2="12" y2="14.01"/>
+            <line x1="8" y1="18" x2="8" y2="18.01"/>
+            <line x1="12" y1="18" x2="12" y2="18.01"/>
+          </svg>
+          Calculate SGPA
+        </button>
+      </div>
+    </section>
 
-<h3>
-  Semester 04
-  <button class="refresh" onclick="resetSemester('s4')">🔄</button>
-</h3>
-<table>
-  <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
-  <tr><td>Database Management Systems</td><td>3</td><td><select class="s4" data-credit="3"></select></td></tr>
-  <tr><td>Data Communication & Networking</td><td>2</td><td><select class="s4" data-credit="2"></select></td></tr>
-  <tr><td>UI/UX Design</td><td>2</td><td><select class="s4" data-credit="2"></select></td></tr>
-  <tr><td>IT Quality Assurance</td><td>2</td><td><select class="s4" data-credit="2"></select></td></tr>
-  <tr><td>IT Project Management</td><td>2</td><td><select class="s4" data-credit="2"></select></td></tr>
-  <tr><td>Programming Group Project</td><td>4</td><td><select class="s4" data-credit="4"></select></td></tr>
-</table>
-<button onclick="calculateSGPA('s4', 'sgpa4')">Calculate Semester 04 GPA</button>
-<h4>SGPA Semester 04: <span id="sgpa4">–</span></h4>
+    <!-- Calculate All Button -->
+    <button class="btn-primary" onclick="calculateAll()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20V10"/>
+        <path d="M18 20V4"/>
+        <path d="M6 20v-4"/>
+      </svg>
+      Calculate All GPAs
+    </button>
 
-<h4>Level 02 LGPA: <span id="lgpa2">–</span></h4>
-<hr>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Built for BIT Students</p>
+    </footer>
+  </div>
 
-<button onclick="calculateLevelGPA()">Calculate Level GPAs</button>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
