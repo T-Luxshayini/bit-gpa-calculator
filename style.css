@@ -2,23 +2,34 @@ body {
   font-family: Arial, sans-serif;
   background: #f4f6f9;
   padding: 20px;
+  margin: 0;
 }
 
 h1 {
   text-align: center;
   color: #1f3c88;
+  font-size: 1.8em;
+  margin-bottom: 20px;
 }
 
+h2 {
+  color: #1f3c88;
+  margin-top: 25px;
+}
+
+/* Normal desktop/laptop table */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
+/* Table cells */
 th, td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: center;
+  font-size: 0.9em;
 }
 
 th {
@@ -26,21 +37,33 @@ th {
   color: white;
 }
 
-select {
-  padding: 4px;
-  width: 100%;
-}
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
 
-button {
-  padding: 8px 15px;
-  font-size: 14px;
-  background: #1f3c88;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 5px;
-}
+  table {
+    display: block;       /* Only for mobile */
+    overflow-x: auto;     /* Scrollable horizontally on small screens */
+  }
 
-button:hover {
-  background: #163172;
+  th, td {
+    font-size: 0.75em;
+    padding: 5px;
+  }
+
+  select {
+    font-size: 0.8em;
+    padding: 4px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  button.refresh {
+    font-size: 16px;
+  }
 }

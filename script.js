@@ -42,6 +42,21 @@ function calculateSGPA(className, outputId) {
   return gpa;
 }
 
+// Reset a semester dropdowns and GPA display
+function resetSemester(className) {
+  document.querySelectorAll("." + className).forEach(sel => {
+    sel.selectedIndex = 0;
+  });
+
+  const sgpaId = className === "s1" ? "sgpa1" :
+                 className === "s2" ? "sgpa2" :
+                 className === "s3" ? "sgpa3" :
+                 className === "s4" ? "sgpa4" : "";
+  if (sgpaId) {
+    document.getElementById(sgpaId).textContent = "–";
+  }
+}
+
 // Calculate Level LGPA
 function calculateLevelGPA() {
   const sgpa1 = Number(document.getElementById("sgpa1").textContent) || 0;
