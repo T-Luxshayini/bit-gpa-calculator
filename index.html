@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIT GPA Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>BIT Level GPA Calculator</h1>
+
+<!-- ===== LEVEL 01 ===== -->
+<h2>Level 01</h2>
+
+<h3>Semester 01</h3>
+<table>
+  <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
+  <tr><td>Communication Skills</td><td>2</td><td><select class="s1" data-credit="2"></select></td></tr>
+  <tr><td>Computer Systems</td><td>2</td><td><select class="s1" data-credit="2"></select></td></tr>
+  <tr><td>Mathematics & Statistics</td><td>2</td><td><select class="s1" data-credit="2"></select></td></tr>
+  <tr><td>Web Design</td><td>3</td><td><select class="s1" data-credit="3"></select></td></tr>
+  <tr><td>Fundamentals of Programming</td><td>3</td><td><select class="s1" data-credit="3"></select></td></tr>
+  <tr><td>ICT Skills</td><td>3</td><td><select class="s1" data-credit="3"></select></td></tr>
+</table>
+<button onclick="calculateSGPA('s1', 'sgpa1')">Calculate Semester 01 GPA</button>
+<h4>SGPA Semester 01: <span id="sgpa1">–</span></h4>
+
+<h3>Semester 02</h3>
+<table>
+  <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
+  <tr><td>Fundamentals of Databases</td><td>2</td><td><select class="s2" data-credit="2"></select></td></tr>
+  <tr><td>Technical Writing</td><td>2</td><td><select class="s2" data-credit="2"></select></td></tr>
+  <tr><td>Visual Applications</td><td>3</td><td><select class="s2" data-credit="3"></select></td></tr>
+  <tr><td>Web Programming</td><td>3</td><td><select class="s2" data-credit="3"></select></td></tr>
+  <tr><td>System Design Paradigms</td><td>3</td><td><select class="s2" data-credit="3"></select></td></tr>
+  <tr><td>ICT Project</td><td>2</td><td><select class="s2" data-credit="2"></select></td></tr>
+</table>
+<button onclick="calculateSGPA('s2', 'sgpa2')">Calculate Semester 02 GPA</button>
+<h4>SGPA Semester 02: <span id="sgpa2">–</span></h4>
+
+<h4>Level 01 LGPA: <span id="lgpa1">–</span></h4>
+<hr>
+
+<!-- ===== LEVEL 02 ===== -->
+<h2>Level 02</h2>
+
+<h3>Semester 03</h3>
+<table>
+  <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
+  <tr><td>Object Oriented Programming</td><td>3</td><td><select class="s3" data-credit="3"></select></td></tr>
+  <tr><td>Data Structures and Algorithms</td><td>2</td><td><select class="s3" data-credit="2"></select></td></tr>
+  <tr><td>Operating Systems</td><td>2</td><td><select class="s3" data-credit="2"></select></td></tr>
+  <tr><td>Calculus & Statistical Distributions</td><td>2</td><td><select class="s3" data-credit="2"></select></td></tr>
+  <tr><td>Software Engineering</td><td>3</td><td><select class="s3" data-credit="3"></select></td></tr>
+  <tr><td>Object Oriented Analysis Design</td><td>3</td><td><select class="s3" data-credit="3"></select></td></tr>
+  <tr><td>Industry Mentoring Program (NGPA)</td><td>3</td><td><select class="s3" data-credit="3" data-ngpa="true"></select></td></tr>
+</table>
+<button onclick="calculateSGPA('s3', 'sgpa3')">Calculate Semester 03 GPA</button>
+<h4>SGPA Semester 03: <span id="sgpa3">–</span></h4>
+
+<h3>Semester 04</h3>
+<table>
+  <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
+  <tr><td>Database Management Systems</td><td>3</td><td><select class="s4" data-credit="3"></select></td></tr>
+  <tr><td>Data Communication & Networking</td><td>2</td><td><select class="s4" data-credit="2"></select></td></tr>
+  <tr><td>UI/UX Design</td><td>2</td><td><select class="s4" data-credit="2"></select></td></tr>
+  <tr><td>IT Quality Assurance</td><td>2</td><td><select class="s4" data-credit="2"></select></td></tr>
+  <tr><td>IT Project Management</td><td>2</td><td><select class="s4" data-credit="2"></select></td></tr>
+  <tr><td>Programming Group Project</td><td>4</td><td><select class="s4" data-credit="4"></select></td></tr>
+</table>
+<button onclick="calculateSGPA('s4', 'sgpa4')">Calculate Semester 04 GPA</button>
+<h4>SGPA Semester 04: <span id="sgpa4">–</span></h4>
+
+<h4>Level 02 LGPA: <span id="lgpa2">–</span></h4>
+<hr>
+
+<button onclick="calculateLevelGPA()">Calculate Level GPA</button>
+
+<script src="script.js"></script>
+</body>
+</html>
